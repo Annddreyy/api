@@ -1,0 +1,592 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "location": {
+                "background": 0,
+                "character": -1,
+                "item": -1,
+                "decorations": []
+            },
+            "dialogs": [
+                {
+                    "id": 0,
+                    "text": "Вы отправились в лес, чтобы спасти Василису Прекрасную",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Начать путешествие",
+                            "conditions": [],
+                            "to": 1,
+                            "actions": []
+                        },
+                        {
+                            "id": 1,
+                            "text": "Закончить путешествие",
+                            "to": 0,
+                            "conditions": [],
+                            "actions": [
+                                {
+                                    "name": "Print",
+                                    "parameters": [1]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "location": {
+                "background": 1,
+                "character": -1,
+                "item": -1,
+                "decorations": []
+            },
+            "dialogs": [
+                {
+                    "id": 1,
+                    "text": "Вы видите перед собой дом. Готовы ли вы войти?",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Да",
+                            "conditions": [],
+                            "to": 2,
+                            "actions": []
+                        },
+                        {
+                            "id": 1,
+                            "text": "Нет",
+                            "to": 12,
+                            "conditions": [],
+                            "actions": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "location": {
+                "background": 2,
+                "character": 0,
+                "item": -1,
+                "decorations": [1]
+            },
+            "dialogs": [
+                {
+                    "id": 2,
+                    "text": "В доме вы встречаете Бабу Ягу. Она готова помочь вам, если вы поймаете для нее рыбу (5 штук). Готовы выполнить ее поручение?",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Да",
+                            "conditions": [],
+                            "to": 3,
+                            "actions": []
+                        },
+                        {
+                            "id": 1,
+                            "text": "Нет",
+                            "to": 2,
+                            "conditions": [],
+                            "actions": [
+                                {
+                                    "name": "Print",
+                                    "parameters": [2]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "location": {
+                "background": 2,
+                "character": 0,
+                "item": -1,
+                "decorations": []
+            },
+            "dialogs": [
+                {
+                    "id": 6,
+                    "text": "Вы возвращаетесь к Бабе Яге",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Отдать Бабе Яге рыбу и получить золотой клубок",
+                            "conditions": [
+                                {
+                                    "name": "IsObjectsInInventory",
+                                    "parameters": [3, 5]
+                                }
+                            ],
+                            "to": 7,
+                            "actions": [
+                                {
+                                    "name": "ChangeItemInInventoryAt",
+                                    "parameters": [1, -1]
+                                },
+                                {
+                                    "name": "ChangeItemInInventoryAt",
+                                    "parameters": [1, 1]
+                                },
+                                {
+                                    "name": "ChangeItemInInventoryAt",
+                                    "parameters": [3, -5]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "text": "Не отдавать рыбу",
+                            "conditions": [],
+                            "to": 6,
+                            "actions": [
+                                {
+                                    "name": "Print",
+                                    "parameters": [3]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "location": {
+                "background": 3,
+                "character": 1,
+                "item": -1,
+                "decorations": []
+            },
+            "dialogs": [
+                {
+                    "id": 3,
+                    "text": "Около реки вы встречаете Русалку. Она готова помочь вам поймать рыбу, если вы принесете ей цветы ( 5 штук). Поможете ли вы Русалке?",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Да",
+                            "conditions": [],
+                            "to": 4,
+                            "actions": []
+                        },
+                        {
+                            "id": 1,
+                            "text": "Нет, сам наловлю рыбу",
+                            "to": 3,
+                            "conditions": [],
+                            "actions": [
+                                {
+                                    "name": "Print",
+                                    "parameters": [4]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "text": "Вы отдаете Русалке цветы",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Пойти к Бабе Яге",
+                            "conditions": [],
+                            "to": 6,
+                            "actions": [
+                                {
+                                    "name": "ChangeItemInInventoryAt",
+                                    "parameters": [3, 10]
+                                },
+                                {
+                                    "name": "ChangeItemInInventoryAt",
+                                    "parameters": [5, -5]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "location": {
+                "background": 4,
+                "character": -1,
+                "item": -1,
+                "decorations": [0, 0]
+            },
+            "dialogs": [
+                {
+                    "id": 4,
+                    "text": "Вы попали на опушку и видите вокруг себя море цветов.",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Нарвать цветы",
+                            "conditions": [],
+                            "to": 5,
+                            "actions": [
+                                {
+                                    "name": "ChangeItemInInventoryAt",
+                                    "parameters": [5, 15]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 1,
+                            "text": "Пойти обратно без цветов",
+                            "conditions": [],
+                            "to": 4,
+                            "actions": [
+                                {
+                                    "name": "Print",
+                                    "parameters": [5]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "location": {
+                "background": 5,
+                "character": -1,
+                "item": -1,
+                "decorations": []
+            },
+            "dialogs": [
+                {
+                    "id": 7,
+                    "text": "Попрощавшись с Бабой Ягой, вы отправились дальше. Спустя некоторое время перед вами открылся вид на дом. Войдете ли вы в него?",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Да, конечно",
+                            "conditions": [],
+                            "to": 8,
+                            "actions": []
+                        },
+                        {
+                            "id": 1,
+                            "text": "Нет, лучше вернусь обратно",
+                            "conditions": [],
+                            "to": 6,
+                            "actions": [
+                                {
+                                    "name": "Print",
+                                    "parameters": [6]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 13,
+                    "text": "Попрощавшись с Водяным, вы отправилсь дальше. Спустя некоторое время перед вами открылся вид на дом. Войдете ли вы в него?",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Войти в дом",
+                            "conditions": [],
+                            "to": 8,
+                            "actions": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "location": {
+                "background": 6,
+                "character": 2,
+                "item": -1,
+                "decorations": []
+            },
+            "dialogs": [
+                {
+                    "id": 8,
+                    "text": "В домике вы встречаете Лешего. Он готов дать вам меч-кладенец, если вы принесете ему желуди. Выполните ли вы его поручение?",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Да, конечно",
+                            "conditions": [],
+                            "to": 9,
+                            "actions": []
+                        },
+                        {
+                            "id": 1,
+                            "text": "Не хочу",
+                            "conditions": [],
+                            "to": 8,
+                            "actions": [
+                                {
+                                    "name": "Print",
+                                    "parameters": [7]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 10,
+                    "text": "Вы заходите в дом к Лешему. Отдадите ли вы ему желуди?",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Да, конечно",
+                            "conditions": [],
+                            "to": 11,
+                            "actions": [
+                                {
+                                    "name": "ChangeItemInInventoryAt",
+                                    "parameters": [0, -10]
+                                },
+                                {
+                                    "name": "ChangeItemInInventoryAt",
+                                    "parameters": [2, 1]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 1,
+                            "text": "Не хочу",
+                            "conditions": [],
+                            "to": 10,
+                            "actions": [
+                                {
+                                    "name": "Print",
+                                    "parameters": [9]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "location": {
+                "background": 7,
+                "character": -1,
+                "item": -1,
+                "decorations": [2, 2]
+            },
+            "dialogs": [
+                {
+                    "id": 9,
+                    "text": "Вы увидели большие дубы",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Собрать желуди",
+                            "conditions": [],
+                            "to": 10,
+                            "actions": [
+                                {
+                                    "name": "ChangeItemInInventoryAt",
+                                    "parameters": [0, 30]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 1,
+                            "text": "Не хочу собирать желуди",
+                            "conditions": [],
+                            "to": 9,
+                            "actions": [
+                                {
+                                    "name": "Print",
+                                    "parameters": [8]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "location": {
+                "background": 9,
+                "character": 4,
+                "item": -1,
+                "decorations": []
+            },
+            "dialogs": [
+                {
+                    "id": 11,
+                    "text": "Вы попали в логово Змея Горыныча. Он предлагает вам золото. Примите ли вы его предложение или спасете Василису?",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Получить золото",
+                            "conditions": [],
+                            "to": -1,
+                            "actions": [
+                                {
+                                    "name": "UpdateGame",
+                                    "parameters": []
+                                },
+                                {
+                                    "name": "Lose",
+                                    "parameters": []
+                                },
+                                {
+                                    "name": "Print",
+                                    "parameters": [11]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 1,
+                            "text": "Спасти Василису",
+                            "conditions": [
+                                {
+                                    "name": "IsStatMore",
+                                    "parameters": [0, 15]
+                                },
+                                {
+                                    "name": "IsStatMore",
+                                    "parameters": [1, 30]
+                                }
+                            ],
+                            "to": 15,
+                            "actions": [
+                                {
+                                    "name": "ChangeItemInInventoryAt",
+                                    "parameters": [9, 1]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "location": {
+                "background": 8,
+                "character": 3,
+                "item": -1,
+                "decorations": [0, 0]
+            },
+            "dialogs": [
+                {
+                    "id": 12,
+                    "text": "Вы встречаете Водяного. Он готов помочь вам, если вы готовы намолоть ему муку. Сделаете ли вы это?",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Намолоть муку",
+                            "conditions": [],
+                            "to": 13,
+                            "actions": []
+                        },
+                        {
+                            "id": 1,
+                            "text": "Нет, не хочу",
+                            "conditions": [],
+                            "to": 12,
+                            "actions": [
+                                {
+                                    "name": "Print",
+                                    "parameters": [10]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "location": {
+                "background": 10,
+                "character": 5,
+                "item": -1,
+                "decorations": []
+            },
+            "dialogs": [
+                {
+                    "id": 14,
+                    "text": "Вы спасли Василису",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Закончить путешествие",
+                            "conditions": [],
+                            "to": -1,
+                            "actions": [
+                                {
+                                    "name": "Win",
+                                    "parameters": []
+                                },
+                                {
+                                    "name": "UpdateGame",
+                                    "parameters": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "location": {
+                "background": 11,
+                "character": -1,
+                "item": -1,
+                "decorations": []
+            },
+            "dialogs": [
+                {
+                    "id": 15,
+                    "text": "Вы видите перед собой сундук",
+                    "variants": [
+                        {
+                            "id": 0,
+                            "text": "Открыть сундук",
+                            "conditions": [
+                                {
+                                    "name": "IsObjectsInInventory",
+                                    "parameters": [9, 1]
+                                }
+                            ],
+                            "to": 15,
+                            "actions": [
+                                {
+                                    "name": "ChangeItemInInventoryAt",
+                                    "parameters": [9, -1]
+                                },
+                                {
+                                    "name": "GetReward",
+                                    "parameters": []
+                                }
+                            ]
+                        },
+                        {
+                            "id": 1,
+                            "text": "Пойти к Василисе",
+                            "conditions": [],
+                            "to": 14,
+                            "actions": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
